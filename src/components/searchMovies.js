@@ -18,7 +18,6 @@ export const SearchMovices = () => {
         
       }, [query]);
     
-
     return (
         <>
             <form className="form" >
