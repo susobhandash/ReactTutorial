@@ -72,6 +72,10 @@ h1, h2, h3, h4, h5 {
   box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
 }
 
+.neo-shadow-lvl {
+  box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+}
+
 .neo-shadow-hover {
   transition: all 0.2s ease-in-out;
   cursor: pointer;
@@ -148,12 +152,12 @@ h1, h2, h3, h4, h5 {
 
 .card--image {
   height: 280px;
-  width: calc(100% + 2rem);
-  /* border-radius: 10px; */
+  width: 100%;
+  /* width: calc(100% + 2rem); */
+  border-radius: 10px;
+  border: 1px solid #000;
   overflow: hidden;
   background: #000;
-  margin-top: -1rem;
-  margin-left: -1rem;
 }
 
 .card--image img {
