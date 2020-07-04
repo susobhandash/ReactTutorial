@@ -1,11 +1,11 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import SearchMovies from "./components/searchMovies";
+import {SearchMovices} from "./components/searchMovies";
 
 function App() {
   return (
-    <div className="App neo-shadow">
+    <div className="App">
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -21,7 +21,8 @@ function App() {
         </a>
       </header> */}
       <h1>Search Movies</h1>
-      <SearchMovies/>
+      {/* <SearchMovices/> */}
+      {SearchMovices()}
     </div>
   );
 }
