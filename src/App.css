@@ -80,7 +80,9 @@ h1, h2, h3, h4, h5 {
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
-.neo-shadow-hover:hover {
+.neo-shadow-hover:hover,
+.neo-shadow-hover:active,
+.neo-shadow-hover:focus {
   box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
 }
 
