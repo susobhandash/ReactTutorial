@@ -3,6 +3,8 @@ import {useService} from '../services/movieService';
 
 // React UI Libraries
 import { makeStyles } from '@material-ui/core/styles';
+
+// Card
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -11,15 +13,26 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
+
+// Typography
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+// Tooltip
+import Tooltip from '@material-ui/core/Tooltip';
+
+// Rating
+import Box from '@material-ui/core/Box';
+import Rating from '@material-ui/lab/Rating';
+
+// Icons
+import TouchAppIcon from '@material-ui/icons/TouchApp';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MovieIcon from '@material-ui/icons/Movie';
-import Tooltip from '@material-ui/core/Tooltip';
+// import ShareIcon from '@material-ui/icons/Share';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const { useCallback } = React;
 
@@ -71,45 +84,41 @@ export default function MovieCard({movie}){
     }, [service, movieid]);
 
     return (
-        //  <div className="card neo-shadow-lvl">
-        //     <div className="card--image">
-        //         <img src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
-        //             alt={movie.title + ' poster'} data={movie.id}
-        //             onClick={(e) => {setMovieid(Number(e.target.getAttribute('data')));}}
-        //         />
-        //     </div>
-        //     <div className="card--content">
-        //         <h3 className="card--title"> {movieid} {movie.id} {movie.title}</h3>
-        //         <p><small>RELEASE DATE: {movie.release_date}</small></p>
-        //         <p><small>RATING: {movie.vote_average}</small></p>
-        //         <p className="card--desc">{movie.overview}</p>
-        //     </div>
-
-        // </div>
         <Card className={classes.root}>
-            <Tooltip title={movie.title}>
-                <CardHeader
-                    avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
-                        <MovieIcon/>
-                    </Avatar>
-                    }
-                    action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                    </IconButton>
-                    }
-                    title={movie.title}
-                    subheader={movie.vote_average}
-                />
-            </Tooltip>
+            
+            <CardHeader
+                avatar={
+                <Avatar aria-label="recipe" className={classes.avatar}>
+                    <MovieIcon/>
+                </Avatar>
+                }
+                action={
+                <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                </IconButton>
+                }
+                title={
+                    <Tooltip title={movie.title} placement="top">
+                        <Typography variant="body2" color="textPrimary" component="p">
+                            {movie.title}
+                        </Typography>
+                    </Tooltip>
+                }
+                subheader={
+                    <Tooltip title={movie.vote_average} placement="top">
+                        <Box component="fieldset" mb={0} pt={0} pb={0} pl={0} pr={0} borderColor="transparent">
+                            <Rating name="customized-10" defaultValue={movie.vote_average/2} max={5} />
+                        </Box>
+                    </Tooltip>
+                }
+            />
             <CardMedia
                 className={classes.media}
                 image={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
                 title={movie.title + ' poster'}
             />
             <CardContent>
-                <Typography variant="h6" color="textPrimary" component="h6">
+                <Typography variant="small" color="textPrimary" component="small">
                     Release Date: {movie.release_date}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
@@ -121,7 +130,7 @@ export default function MovieCard({movie}){
                     <FavoriteIcon />
                 </IconButton>
                 <IconButton aria-label="share">
-                    <ShareIcon />
+                    <TouchAppIcon />
                 </IconButton>
                 <IconButton
                     className={clsx(classes.expand, {

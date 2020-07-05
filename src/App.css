@@ -148,7 +148,7 @@ h1, h2, h3, h4, h5 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-height: calc(100vh - 24rem);
+  max-height: calc(100vh - 16.5rem);
   overflow: auto;
 }
 

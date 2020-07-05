@@ -21,7 +21,7 @@ export const SearchMovices = () => {
     return (
         <>
             <form className="form" >
-                <label className="label" htmlFor="query">Movie Name</label>
+                {/* <label className="label" htmlFor="query">Movie Name</label> */}
                 <input className="input neo-shadow-inset neo-shadow-inset-focus" type="text" name="query"
                     value={query} onChange={(e) => setQuery(e.target.value)}
                 />
