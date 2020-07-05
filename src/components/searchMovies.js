@@ -29,7 +29,7 @@ export const SearchMovices = () => {
             </form>
             <div className="card-list">
                 {
-                    movies.filter(movie => movie.poster_path).map(movie => (
+                    movies.filter(movie => movie.poster_path && movie.overview).map(movie => (
                         <MovieCard movie={movie} key={movie.id} />
                     ))
                 }

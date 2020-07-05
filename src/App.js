@@ -20,7 +20,7 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <h1>Search Movies</h1>
+      <h1 class="mt-0">Search Movies</h1>
       {/* <SearchMovices/> */}
       {SearchMovices()}
     </div>
