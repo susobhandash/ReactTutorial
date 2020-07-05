@@ -30,11 +30,10 @@ import Rating from '@material-ui/lab/Rating';
 import TouchAppIcon from '@material-ui/icons/TouchApp';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import MovieIcon from '@material-ui/icons/Movie';
-// import ShareIcon from '@material-ui/icons/Share';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-const { useCallback } = React;
+// const { useCallback } = React;
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -61,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MovieCard({movie}){
     const service = useService();
-    const [movieid, setMovieid] = useState(0);
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
 
@@ -73,15 +71,14 @@ export default function MovieCard({movie}){
         return desc.substring(0, 100) + '....';
     };
 
-    useEffect(() => { 
-        setMovieid(movieid);
-            if(movieid !== 0) {
-                const data = service.getSimilarMovies(movieid).then(async (res) => {
-                    const result  = await res.json();
-                    console.log(result);
-                });
-            }
-    }, [service, movieid]);
+    const searchSimilar = (id) => {
+        if(id !== 0) {
+            const data = service.getSimilarMovies(id).then(async (res) => {
+                const result  = await res.json();
+                console.log(result);
+            });
+        }
+    };
 
     return (
         <Card className={classes.root}>
@@ -118,7 +115,7 @@ export default function MovieCard({movie}){
                 title={movie.title + ' poster'}
             />
             <CardContent>
-                <Typography variant="small" color="textPrimary" component="small">
+                <Typography variant="body2" color="textPrimary" component="p">
                     Release Date: {movie.release_date}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
@@ -129,8 +126,9 @@ export default function MovieCard({movie}){
                 <IconButton aria-label="add to favorites">
                     <FavoriteIcon />
                 </IconButton>
-                <IconButton aria-label="share">
-                    <TouchAppIcon />
+                <IconButton aria-label="share" data={movie.id}
+                        onClick={(e) => {searchSimilar(movie.id)}}>
+                    <TouchAppIcon/>
                 </IconButton>
                 <IconButton
                     className={clsx(classes.expand, {
