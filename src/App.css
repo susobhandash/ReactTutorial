@@ -53,6 +53,14 @@
 .mt-0 {
   margin-top: 0!important;
 }
+.ml-auto {
+  margin-left: auto;
+}
+.align-center-justify-between {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
 
 
 /* Neoumorphism */
@@ -210,4 +218,12 @@ h1, h2, h3, h4, h5 {
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
+}
+
+.card--root {
+  max-width: 245px;
+}
+
+.card--media {
+  height: 140px;
 }
